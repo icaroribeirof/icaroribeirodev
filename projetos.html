@@ -1,16 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ícaro Ribeiro - Engenheiro de Software</title>
   <link rel="icon" href="img/LOGOMARCA FUNDO TRANSPARENTE.png" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Modal expandido para imagens */
+    .image-expanded {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+
+    .image-expanded.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .expanded-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .expanded-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: default;
+    }
+
+    .expanded-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .close-expanded {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: #00e0ff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10002;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .close-expanded:hover {
+      color: #fff;
+      background-color: transparent;
+    }
+
+    .close-expanded:focus {
+      outline: none;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 224, 255, 0.8);
+      color: #222;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 15px 20px;
+      border-radius: 5px;
+      z-index: 10001;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-arrow:hover {
+      background-color: #00e0ff;
+    }
+
+    .nav-arrow:focus {
+      outline: none;
+    }
+
+    .nav-arrow.left {
+      left: 20px;
+    }
+
+    .nav-arrow.right {
+      right: 20px;
+    }
+
+    .image-counter {
+      color: #00e0ff;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-arrow {
+        padding: 10px 15px;
+        font-size: 24px;
+      }
+
+      .expanded-content img {
+        max-height: 70vh;
+      }
+
+      .close-expanded {
+        font-size: 32px;
+        right: 15px;
+        top: 15px;
+      }
+    }
+  </style>
 </head>
+
+<!-- Modal para imagem expandida -->
+<div id="imageExpanded" class="image-expanded" onclick="fecharAoClicarFora(event)">
+  <button class="close-expanded" onclick="fecharImagemExpandida()" title="Fechar (ESC)">×</button>
+  <div class="expanded-wrapper" onclick="event.stopPropagation()">
+    <div class="expanded-content">
+      <button class="nav-arrow left" onclick="imagemAnterior()">❮</button>
+      <img id="expandedImage" src="" alt="Imagem expandida">
+      <button class="nav-arrow right" onclick="proximaImagem()">❯</button>
+      <div class="image-counter">
+        <span id="imageCount">1 / 1</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal Projeto 1 -->
 <div id="modal1" class="modal">
@@ -18,186 +157,262 @@
     <span class="fechar" onclick="fecharModal('modal1')">&times;</span>
     <h2>Sistema de Gestão de Recursos</h2>
     <p>Plataforma web desenvolvida para a empresa Vale, com o objetivo da área ter controle total sobre todos os agendamentos de veículos, condutores e profissionais de segurança, evitando conflitos entre datas cooperando para uma melhor organização.</p>
-    <img src="img/projetos/gestao_recursos/1.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/2.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/3.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/4.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/5.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/6.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/7.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/8.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/9.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/10.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/11.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/12.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/13.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/14.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/15.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/16.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/17.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/18.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/19.png" class="modal-img">
-    <img src="img/projetos/gestao_recursos/20.png" class="modal-img">
+    <img src="img/projetos/gestao_recursos/1.png" class="modal-img" loading="lazy" alt="Screenshot 1 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/2.png" class="modal-img" loading="lazy" alt="Screenshot 2 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/3.png" class="modal-img" loading="lazy" alt="Screenshot 3 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/4.png" class="modal-img" loading="lazy" alt="Screenshot 4 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/5.png" class="modal-img" loading="lazy" alt="Screenshot 5 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/6.png" class="modal-img" loading="lazy" alt="Screenshot 6 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/7.png" class="modal-img" loading="lazy" alt="Screenshot 7 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/8.png" class="modal-img" loading="lazy" alt="Screenshot 8 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/9.png" class="modal-img" loading="lazy" alt="Screenshot 9 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/10.png" class="modal-img" loading="lazy" alt="Screenshot 10 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/11.png" class="modal-img" loading="lazy" alt="Screenshot 11 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/12.png" class="modal-img" loading="lazy" alt="Screenshot 12 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/13.png" class="modal-img" loading="lazy" alt="Screenshot 13 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/14.png" class="modal-img" loading="lazy" alt="Screenshot 14 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/15.png" class="modal-img" loading="lazy" alt="Screenshot 15 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/16.png" class="modal-img" loading="lazy" alt="Screenshot 16 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/17.png" class="modal-img" loading="lazy" alt="Screenshot 17 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/18.png" class="modal-img" loading="lazy" alt="Screenshot 18 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/19.png" class="modal-img" loading="lazy" alt="Screenshot 19 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_recursos/20.png" class="modal-img" loading="lazy" alt="Screenshot 20 - Sistema de Gestão de Recursos" onclick="expandirImagem(this)" style="cursor: pointer;">
   </div>
 </div>
+
 <!-- Modal Projeto 2 -->
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="fechar" onclick="fecharModal('modal2')">&times;</span>
     <h2>Sistema de Gestão de Demandas</h2>
     <p>Plataforma web desenvolvida para a empresa Vale, com foco na realização da gestão das demandas realizadas no setor de Licenciamento Ambiental, Logística e Pelotização, visando a centralização dos dados, organização, segurança e agilidade.</p>
-    <img src="img/projetos/gestao_demandas_lalp/1.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/2.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/3.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/4.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/5.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/6.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/7.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/8.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/9.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/10.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/11.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/12.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/13.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/14.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/15.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/16.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/17.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/18.png" class="modal-img">
-    <img src="img/projetos/gestao_demandas_lalp/19.png" class="modal-img">
+    <img src="img/projetos/gestao_demandas_lalp/1.png" class="modal-img" loading="lazy" alt="Screenshot 1 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/2.png" class="modal-img" loading="lazy" alt="Screenshot 2 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/3.png" class="modal-img" loading="lazy" alt="Screenshot 3 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/4.png" class="modal-img" loading="lazy" alt="Screenshot 4 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/5.png" class="modal-img" loading="lazy" alt="Screenshot 5 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/6.png" class="modal-img" loading="lazy" alt="Screenshot 6 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/7.png" class="modal-img" loading="lazy" alt="Screenshot 7 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/8.png" class="modal-img" loading="lazy" alt="Screenshot 8 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/9.png" class="modal-img" loading="lazy" alt="Screenshot 9 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/10.png" class="modal-img" loading="lazy" alt="Screenshot 10 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/11.png" class="modal-img" loading="lazy" alt="Screenshot 11 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/12.png" class="modal-img" loading="lazy" alt="Screenshot 12 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/13.png" class="modal-img" loading="lazy" alt="Screenshot 13 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/14.png" class="modal-img" loading="lazy" alt="Screenshot 14 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/15.png" class="modal-img" loading="lazy" alt="Screenshot 15 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/16.png" class="modal-img" loading="lazy" alt="Screenshot 16 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/17.png" class="modal-img" loading="lazy" alt="Screenshot 17 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/18.png" class="modal-img" loading="lazy" alt="Screenshot 18 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/gestao_demandas_lalp/19.png" class="modal-img" loading="lazy" alt="Screenshot 19 - Sistema de Gestão de Demandas" onclick="expandirImagem(this)" style="cursor: pointer;">
   </div>
 </div>
-<body>
+
 <!-- Modal Projeto 3 -->
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="fechar" onclick="fecharModal('modal3')">&times;</span>
     <h2>Aplicação de Agendamentos e Venda de Produtos</h2>
     <p>Projeto desenvolvido para a empresa Studio Transformese com o objetivo de centralizar os agendamentos dos clientes, sinalizar os produtos disponíveis para compra melhorando a produtividade do cliente.</p>
-    <img src="img/projetos/sistema_studio_transformese/1.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/2.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/3.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/4.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/5.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/6.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/7.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/8.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/9.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/10.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/11.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/12.png" class="modal-img">
-    <img src="img/projetos/sistema_studio_transformese/13.png" class="modal-img">
+    <img src="img/projetos/sistema_studio_transformese/1.png" class="modal-img" loading="lazy" alt="Screenshot 1 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/2.png" class="modal-img" loading="lazy" alt="Screenshot 2 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/3.png" class="modal-img" loading="lazy" alt="Screenshot 3 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/4.png" class="modal-img" loading="lazy" alt="Screenshot 4 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/5.png" class="modal-img" loading="lazy" alt="Screenshot 5 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/6.png" class="modal-img" loading="lazy" alt="Screenshot 6 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/7.png" class="modal-img" loading="lazy" alt="Screenshot 7 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/8.png" class="modal-img" loading="lazy" alt="Screenshot 8 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/9.png" class="modal-img" loading="lazy" alt="Screenshot 9 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/10.png" class="modal-img" loading="lazy" alt="Screenshot 10 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/11.png" class="modal-img" loading="lazy" alt="Screenshot 11 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/12.png" class="modal-img" loading="lazy" alt="Screenshot 12 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/sistema_studio_transformese/13.png" class="modal-img" loading="lazy" alt="Screenshot 13 - Studio Transformese" onclick="expandirImagem(this)" style="cursor: pointer;">
   </div>
 </div>
+
 <!-- Modal Projeto 4 -->
 <div id="modal4" class="modal">
   <div class="modal-content">
     <span class="fechar" onclick="fecharModal('modal4')">&times;</span>
     <h2>Agente de IA no WhatsApp</h2>
     <p>Agente de inteligência artificial totalmente automatizado no WhatsApp para garantir autonomia do cliente nas tomadas decisões, aumentando a produtividade, otimizando o tempo de atendimento mas sem perder a qualidade.</p>
-    <img src="img/projetos/agente_ia_whatsapp/1.png" class="modal-img">
-    <img src="img/projetos/agente_ia_whatsapp/2.png" class="modal-img">
+    <img src="img/projetos/agente_ia_whatsapp/1.png" class="modal-img" loading="lazy" alt="Screenshot 1 - Agente IA WhatsApp" onclick="expandirImagem(this)" style="cursor: pointer;">
+    <img src="img/projetos/agente_ia_whatsapp/2.png" class="modal-img" loading="lazy" alt="Screenshot 2 - Agente IA WhatsApp" onclick="expandirImagem(this)" style="cursor: pointer;">
   </div>
 </div>
+
+<body>
   <header>
     <nav>
-      <img src="img/LOGOMARCA FUNDO TRANSPARENTE.png" class="logo">
-      <div class="nav-links">
+      <img src="img/LOGOMARCA FUNDO TRANSPARENTE.png" class="logo" alt="Logo IR Technology">
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+      <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="projetos.html">Projetos</a>
         <a href="contato.html">Contato</a>
       </div>
     </nav>
   </header>
+  
   <main>
     <section class="page active" id="projects">
       <h1>Meus Projetos</h1>
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image">
-            <img src="img/projetos/gestao_recursos/2.png" />
+            <img src="img/projetos/gestao_recursos/2.png" loading="lazy" alt="Sistema de Gestão de Recursos" />
           </div>
           <div class="project-info">
             <h3>Sistema de Gestão de Recursos</h3>
             <p>Plataforma web desenvolvida para a empresa Vale, com o objetivo da área ter controle total sobre todos os agendamentos de veículos, condutores e profissionais de segurança, evitando conflitos entre datas cooperando para uma melhor organização.</p>
             <div class="project-links">
-            <button class="ver-mais-btn" onclick="abrirModal('modal1')">Ver Mais</button>
+              <button class="ver-mais-btn" onclick="abrirModal('modal1')">Ver Mais</button>
             </div>
           </div>
         </div>
+        
         <div class="project-card">
           <div class="project-image">
-            <img src="img/projetos/gestao_demandas_lalp/1.png"/>
+            <img src="img/projetos/gestao_demandas_lalp/1.png" loading="lazy" alt="Sistema de Gestão de Demandas"/>
           </div>
           <div class="project-info">
             <h3>Sistema de Gestão de Demandas</h3>
             <p>Plataforma web desenvolvida para a empresa Vale, com foco na realização da gestão das demandas realizadas no setor de Licenciamento Ambiental, Logística e Pelotização, visando a centralização dos dados, organização, segurança e agilidade.</p>
             <div class="project-links">
-            <button class="ver-mais-btn" onclick="abrirModal('modal2')">Ver Mais</button>
+              <button class="ver-mais-btn" onclick="abrirModal('modal2')">Ver Mais</button>
             </div>
           </div>
         </div>
+        
         <div class="project-card">
           <div class="project-image">
-            <img src="img/projetos/sistema_studio_transformese/3.png"/>
+            <img src="img/projetos/sistema_studio_transformese/3.png" loading="lazy" alt="Studio Transformese - Agendamentos e Vendas"/>
           </div>
           <div class="project-info">
             <h3>Aplicação de Agendamentos e Venda de Produtos</h3>
             <p>Projeto desenvolvido para a empresa Studio Transformese com o objetivo de centralizar os agendamentos dos clientes, sinalizar os produtos disponíveis para compra melhorando a produtividade do cliente.</p>
             <div class="project-links">
-            <button class="ver-mais-btn" onclick="abrirModal('modal3')">Ver Mais</button>
+              <button class="ver-mais-btn" onclick="abrirModal('modal3')">Ver Mais</button>
             </div>
           </div>
         </div>
+        
         <div class="project-card">
           <div class="project-image">
-            <img src="img/projetos/agente_ia_whatsapp/2.png" />
+            <img src="img/projetos/agente_ia_whatsapp/2.png" loading="lazy" alt="Agente de IA no WhatsApp" />
           </div>
           <div class="project-info">
             <h3>Agente de IA no WhatsApp</h3>
             <p>Agente de inteligência artificial totalmente automatizado no WhatsApp para garantir autonomia do cliente nas tomadas decisões, aumentando a produtividade, otimizando o tempo de atendimento mas sem perder a qualidade.</p>
             <div class="project-links">
-            <button class="ver-mais-btn" onclick="abrirModal('modal4')">Ver Mais</button>
+              <button class="ver-mais-btn" onclick="abrirModal('modal4')">Ver Mais</button>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+  
   <footer class="custom-footer">
     <div class="footer-content">
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/icaroribeirof" class="icon-circle" target="_blank"><i
-            class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/icaroribeirof" class="icon-circle" target="_blank"><i
-            class="fab fa-instagram"></i></a>
-        <a href="https://github.com/icaroribeirof" class="icon-circle" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/icaroribeirof" class="icon-circle" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/icaroribeirof" class="icon-circle" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/icaroribeirof" class="icon-circle" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
       <p class="footer-text">© 2025 IR Technology. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-<!-- Script do modal -->
-<script>
-  function abrirModal(id) {
-    document.getElementById(id).style.display = 'block';
-  }
+  <script>
+    let imagensExpandidas = [];
+    let indiceAtual = 0;
 
-  function fecharModal(id) {
-    document.getElementById(id).style.display = 'none';
-  }
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
 
-  // Fecha o modal ao clicar fora dele
-  window.onclick = function (event) {
-    const modais = document.querySelectorAll('.modal');
-    modais.forEach(function (modal) {
-      if (event.target === modal) {
-        modal.style.display = "none";
+    function abrirModal(id) {
+      document.getElementById(id).style.display = 'block';
+      const modal = document.getElementById(id);
+      imagensExpandidas = Array.from(modal.querySelectorAll('.modal-img')).map(img => img.src);
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = 'none';
+      fecharImagemExpandida();
+    }
+
+    window.onclick = function (event) {
+      const modais = document.querySelectorAll('.modal');
+      modais.forEach(function (modal) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+
+    function expandirImagem(img) {
+      const modal = img.closest('.modal');
+      imagensExpandidas = Array.from(modal.querySelectorAll('.modal-img')).map(el => el.src);
+      indiceAtual = imagensExpandidas.indexOf(img.src);
+      
+      const expandedModal = document.getElementById('imageExpanded');
+      const expandedImg = document.getElementById('expandedImage');
+      
+      expandedImg.src = imagensExpandidas[indiceAtual];
+      expandedModal.classList.add('show');
+      
+      atualizarContador();
+      document.addEventListener('keydown', handleKeyPress);
+    }
+
+    function fecharImagemExpandida() {
+      const expandedModal = document.getElementById('imageExpanded');
+      expandedModal.classList.remove('show');
+      document.removeEventListener('keydown', handleKeyPress);
+    }
+
+    function fecharAoClicarFora(event) {
+      if (event.target.id === 'imageExpanded') {
+        fecharImagemExpandida();
       }
-    });
-  }
-</script>
+    }
 
+    function proximaImagem() {
+      if (indiceAtual < imagensExpandidas.length - 1) {
+        indiceAtual++;
+        atualizarImagemExpandida();
+      }
+    }
+
+    function imagemAnterior() {
+      if (indiceAtual > 0) {
+        indiceAtual--;
+        atualizarImagemExpandida();
+      }
+    }
+
+    function atualizarImagemExpandida() {
+      const expandedImg = document.getElementById('expandedImage');
+      expandedImg.src = imagensExpandidas[indiceAtual];
+      atualizarContador();
+    }
+
+    function atualizarContador() {
+      const counter = document.getElementById('imageCount');
+      counter.textContent = (indiceAtual + 1) + ' / ' + imagensExpandidas.length;
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'ArrowRight') {
+        proximaImagem();
+      } else if (event.key === 'ArrowLeft') {
+        imagemAnterior();
+      } else if (event.key === 'Escape') {
+        fecharImagemExpandida();
+      }
+    }
+  </script>
 </body>
-
 </html>

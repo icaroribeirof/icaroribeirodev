@@ -1,85 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ícaro Ribeiro - Engenheiro de Software</title>
   <link rel="icon" href="img/LOGOMARCA FUNDO TRANSPARENTE.png" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* Responsividade adicional */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        display: none;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        color: #00e0ff;
-        background: none;
-        border: none;
-        margin-top: 10px;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .menu-toggle {
-        display: none;
-      }
-    }
-
-    .cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .card {
-      background-color: #111;
-      border: 1px solid #00e0ff;
-      border-radius: 10px;
-      padding: 20px;
-      width: 300px;
-      color: white;
-      box-shadow: 0 0 10px rgba(0, 224, 255, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: #00e0ff;
-    }
-  </style>
 </head>
-
 <body>
   <header>
     <nav>
-      <img src="img/LOGOMARCA FUNDO TRANSPARENTE.png" class="logo">
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <img src="img/LOGOMARCA FUNDO TRANSPARENTE.png" class="logo" alt="Logo IR Technology">
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
       <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="projetos.html">Projetos</a>
@@ -87,20 +21,14 @@
       </div>
     </nav>
   </header>
+  
   <main>
     <section class="page active" id="home">
       <div class="hero">
         <img alt="Ícaro Ribeiro" src="img/FOTO DE PERFIL.jpg" />
         <h2>Seja muito bem-vindo ao site do ícaro!</h2>
-
-        <p>Ícaro é um Engenheiro de Software graduado pela<br> Universidade Estácio de Sá, com experiência no mercado
-          desde
-          2020 ajudando empresas no desenvolvimento de aplicativos, sistemas, automações de
-          fluxos de trabalho e otimizações de processos.</p>
-
-        <p>São fornecidas por aqui soluções de acordo com a necessidade dos clientes, garantindo
-          proatividade, lealdade, comunicação ativa, <br>segurança dos dados e agilidade nas entregas.</p>
-
+        <p>Ícaro é um Engenheiro de Software graduado pela<br> Universidade Estácio de Sá, com experiência no mercado desde 2020 ajudando empresas no desenvolvimento de aplicativos, sistemas, automações de fluxos de trabalho e otimizações de processos.</p>
+        <p>São fornecidas por aqui soluções de acordo com a necessidade dos clientes, garantindo proatividade, lealdade, comunicação ativa, <br>segurança dos dados e agilidade nas entregas.</p>
         <p>Aqui estão as tecnologias utilizadas nas soluções:</p>
         <div class="skills">
           <span class="skill">HTML5/CSS3</span>
@@ -130,28 +58,21 @@
             <div class="timeline-content">
               <div class="timeline-date">2023 - 2025</div>
               <h3>Desenvolvedor Power Platform</h3>
-              <p>Desenvolvimento de aplicativos utilizando Power Apps para automatizar processos e melhorar a eficiência
-                operacional, criação e manutenção de fluxos de trabalho no Power Automate para automação de tarefas
-                manuais e
-                integração de sistemas, correções de bugs e sustentação dos produtos desenvolvidos, elaboração de
-                processos para novas aplicações, colaboração com equipes de diferentes departamentos para entender
-                necessidades e desenvolver soluções personalizadas.</p>
+              <p>Desenvolvimento de aplicativos utilizando Power Apps para automatizar processos e melhorar a eficiência operacional, criação e manutenção de fluxos de trabalho no Power Automate para automação de tarefas manuais e integração de sistemas, correções de bugs e sustentação dos produtos desenvolvidos, elaboração de processos para novas aplicações, colaboração com equipes de diferentes departamentos para entender necessidades e desenvolver soluções personalizadas.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-content">
               <div class="timeline-date">2022 - 2023</div>
               <h3>Analista de TI Júnior</h3>
-              <p>Análise de Projetos de TI, Administração da Suite Office 365, Gerenciamento do Active Directory,
-                Servidor de Arquivos e Kaspersky Endpoint Security.</p>
+              <p>Análise de Projetos de TI, Administração da Suite Office 365, Gerenciamento do Active Directory, Servidor de Arquivos e Kaspersky Endpoint Security.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-content">
               <div class="timeline-date">2020 - 2022</div>
               <h3>Estagiário de TI</h3>
-              <p>Construtora Atrium - Gerenciamento do Active Directory, Desenvolvimento de Serviços em Nuvem via
-                SharePoint, Controle do Avast Antivírus Business Security e Suporte Técnico N1 e N2.</p>
+              <p>Construtora Atrium - Gerenciamento do Active Directory, Desenvolvimento de Serviços em Nuvem via SharePoint, Controle do Avast Antivírus Business Security e Suporte Técnico N1 e N2.</p>
             </div>
           </div>
           <div class="timeline-item">
@@ -183,23 +104,22 @@
       </div>
     </section>
   </main>
+  
   <footer class="custom-footer">
     <div class="footer-content">
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/icaroribeirof" class="icon-circle" target="_blank"><i
-            class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/icaroribeirof" class="icon-circle" target="_blank"><i
-            class="fab fa-instagram"></i></a>
-        <a href="https://github.com/icaroribeirof" class="icon-circle" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/icaroribeirof" class="icon-circle" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/icaroribeirof" class="icon-circle" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/icaroribeirof" class="icon-circle" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
       <p class="footer-text">© 2025 IR Technology. Todos os direitos reservados.</p>
     </div>
   </footer>
+  
   <script>
     function toggleMenu() {
       document.getElementById("navLinks").classList.toggle("active");
     }
   </script>
 </body>
-
 </html>

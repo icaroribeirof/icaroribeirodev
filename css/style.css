@@ -53,6 +53,10 @@ nav {
     color: #fff;
 }
 
+.nav-links a:focus {
+    outline: none;;
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -66,6 +70,23 @@ nav {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* MENU TOGGLE - ESCONDIDO NO DESKTOP */
+.menu-toggle {
+    display: none !important;
+    background: none;
+    border: none;
+    color: #00e0ff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: none;
+}
+
+.menu-toggle:hover {
+    color: #00e0ff;
 }
 
 main {
@@ -85,7 +106,7 @@ h1 {
 }
 
 .page {
-    display: true;
+    display: none;
 }
 
 .page.active {
@@ -126,13 +147,9 @@ h1 {
 .hero img:hover {
     box-shadow:
         0 0 20px rgba(0, 224, 255, 0.7),
-        /* Brilho externo */
         0 0 30px rgba(0, 224, 255, 0.4);
-    /* Segunda camada para difusão */
     transform: scale(1.02);
-    /* Efeito de "flutuar" leve */
     filter: drop-shadow(0 0 5px #00e0ff);
-    /* Brilho adicional (opcional) */
 }
 
 .hero h2 {
@@ -169,6 +186,34 @@ h1 {
     color: #222;
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #111;
+    border: 1px solid #00e0ff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #00e0ff;
 }
 
 /* Projects Page */
@@ -270,6 +315,12 @@ textarea {
     font-size: 16px;
 }
 
+input:focus,
+textarea:focus {
+    outline: 2px solid #00e0ff;
+    outline-offset: 2px;
+}
+
 textarea {
     resize: vertical;
     min-height: 150px;
@@ -289,6 +340,11 @@ button {
 
 button:hover {
     background-color: #fff;
+}
+
+button:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
 }
 
 /* Timeline Styles */
@@ -356,26 +412,6 @@ button:hover {
     left: -8px;
 }
 
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 31px;
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-
-    .timeline-item:nth-child(even) {
-        left: 0;
-    }
-
-    .timeline-item::after {
-        left: 23px;
-    }
-}
-
 footer {
     background-color: #222;
     color: #00e0ff;
@@ -384,9 +420,102 @@ footer {
     font-size: 14px;
 }
 
+/* RESPONSIVIDADE MOBILE */
 @media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+    }
+
+    .logo {
+        max-height: 50px;
+        flex-shrink: 0;
+    }
+
     .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
         gap: 15px;
+        margin-top: 10px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #222;
+        padding: 20px;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a:focus {
+        outline: none;
+    }
+
+    /* MOSTRA MENU TOGGLE NO MOBILE */
+    .menu-toggle {
+        display: block !important;
+        cursor: pointer;
+        font-size: 24px;
+        color: #00e0ff;
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        outline: none;
+    }
+
+    .menu-toggle:hover {
+        color: #ffffff;
+        background-color: transparent;
+    }
+
+    .menu-toggle:focus {
+        outline: none
+    }
+
+    .timeline::before {
+        left: 0px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 40px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        left: -1px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: -1px;
+    }
+
+    .timeline-item::after {
+        left: -7px;
+        transform: none;
+        right: auto;
+    }
+
+    .cards-container {
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 320px;
     }
 
     .hero img {
@@ -462,8 +591,6 @@ footer {
 }
 
 /* Modal dos projetos */
-
-/* MODAL */
 .modal {
   display: none;
   position: fixed;
