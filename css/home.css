@@ -172,7 +172,7 @@
     }
 
     .timeline-item:nth-child(even) {
-        left: -1px;
+        left: 0px;
     }
 
     .timeline-item::after {
